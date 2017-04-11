@@ -24,4 +24,4 @@ The following are hopes I have for coding:
 
 ### Support or Contact
 
-Having trouble with Pages? Message tgolpa and we’ll help you sort it out.
+Having trouble? Message tgolpa and we’ll help you sort it out.
