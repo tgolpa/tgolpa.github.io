@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+## Welcome to tgolpa's Code Sample
 
-You can use the [editor on GitHub](https://github.com/tgolpa/tgolpa.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This is where you can view an example of tgolpa's coding progress thus far. Currently tgolpa is practicing on web design.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+For a textbook definition of HMTL, visit: [HTML Description](https://en.wikipedia.org/wiki/HTML).
 
-### Markdown
+### HTML & CSS
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+HTML, HyperText Markup Language, gives content structure and meaning by defining that content as, for example, headings, paragraphs, or images. CSS, or Cascading Style Sheets, is a presentation language created to style the appearance of contentusing, for example, fonts or colors.
 
 ```markdown
-Syntax highlighted code block
+The following are hopes I have for coding:
 
-# Header 1
-## Header 2
-### Header 3
+# iOS
+## Web Frontend
+### Backend
 
-- Bulleted
-- List
+- The following represent what I hope to master:
 
-1. Numbered
-2. List
+1. Mobile App Design
+2. Web Design
+3. Programming
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tgolpa/tgolpa.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Having trouble with Pages? Message tgolpa and we’ll help you sort it out.
