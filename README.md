@@ -8,7 +8,6 @@ For a textbook definition of HMTL, visit: [HTML Description](https://en.wikipedi
 
 HTML, HyperText Markup Language, gives content structure and meaning by defining that content as, for example, headings, paragraphs, or images. CSS, or Cascading Style Sheets, is a presentation language created to style the appearance of contentusing, for example, fonts or colors.
 
-```markdown
 The following are hopes I have for coding:
 
 # iOS
