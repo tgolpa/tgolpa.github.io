@@ -1,6 +1,6 @@
 ## Welcome to tgolpa's Code Sample
 
-This is where you can view an example of tgolpa's coding progress thus far. Currently tgolpa is practicing on web design.
+This is where you can view an example of tgolpa's coding progress thus far. Currently tgolpa is practicing web design.
 
 For a textbook definition of HMTL, visit: [HTML Description](https://en.wikipedia.org/wiki/HTML).
 
