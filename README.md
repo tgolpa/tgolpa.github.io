@@ -11,8 +11,8 @@ HTML, HyperText Markup Language, gives content structure and meaning by defining
 The following are hopes I have for coding:
 
 # iOS
-## Web Frontend
-### Backend
+# Web Frontend
+# Backend
 
 - The following represent what I hope to master:
 
