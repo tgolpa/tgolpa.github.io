@@ -16,9 +16,9 @@ HTML, HyperText Markup Language, gives content structure and meaning by defining
 
 - *The following represent what I hope to improve in:*
 
-1. **[ ]Mobile App Design**
-2. **[x]Web Design**
-3. **[ ]Programming**
+1. [ ]**Mobile App Design**
+2. [x]**Web Design**
+3. [ ]**Programming**
 
 
 ![Image of Words](http://kellerelementary.weebly.com/uploads/2/5/7/9/25792133/coding.jpg)
