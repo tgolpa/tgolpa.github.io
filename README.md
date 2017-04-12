@@ -2,7 +2,7 @@
 
 This is where you can view an example of tgolpa's coding progress thus far. Currently tgolpa is practicing web design.
 
-For an in depth view of tgolpa's resume, work history & professional network; visit: [tgolpa's Linkedin](https://www.linkedin.com/in/tgolpa/?locale=en_US).
+For an in depth view of tgolpa's résumé, work history & professional network; visit: [tgolpa's Linkedin](https://www.linkedin.com/in/tgolpa/?locale=en_US).
 
 # A Message From tgolpa:
 
@@ -14,7 +14,7 @@ For an in depth view of tgolpa's resume, work history & professional network; vi
 ## Web Frontend
 ## Backend
 
-- *The following represent what I hope to improve in:*
+- *The following represent what I currently hope to improve in:*
 
 1. [ ] **Mobile App Design**
 2. [x] **Web Design**
@@ -26,4 +26,4 @@ For an in depth view of tgolpa's resume, work history & professional network; vi
 
 ### Support or Contact:
 
-Having trouble? Message tgolpa and we’ll help you sort it out.
+Having trouble? Message tgolpa's Linkedin and help will be on the way!
