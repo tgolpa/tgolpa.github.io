@@ -27,11 +27,11 @@ For an in depth view of tgolpa's résumé, work history & professional network; 
 ### Coding Study Guide:
 
 
-~ What does Rasterize mean? To convert (an image stored as an outline) into pixels that can be displayed on a screen or printed. [Rasterize Definition] (https://en.wikipedia.org/wiki/Rasterisation).
+~ What does Rasterize mean? To convert (an image stored as an outline) into pixels that can be displayed on a screen or printed. [Rasterize Definition](https://en.wikipedia.org/wiki/Rasterisation).
 
-What does Vectorize mean? In computer graphics, image tracing, raster-to-vector conversion or vectorization is the conversion of raster graphics into vector graphics. [Vectorize Definition] (https://en.wikipedia.org/wiki/Image_tracing).
+What does Vectorize mean? In computer graphics, image tracing, raster-to-vector conversion or vectorization is the conversion of raster graphics into vector graphics. [Vectorize Definition](https://en.wikipedia.org/wiki/Image_tracing).
 
-~ What is Scrum? A scrum master is the facilitator for an agile development team. Scrum is a methodology that allows a team to self-organize and make changes quickly, in accordance with agile principles. The scrum master manages the process for how information is exchanged. [Scrum Definition] (http://whatis.techtarget.com/definition/scrum-master).
+~ What is Scrum? A scrum master is the facilitator for an agile development team. Scrum is a methodology that allows a team to self-organize and make changes quickly, in accordance with agile principles. The scrum master manages the process for how information is exchanged. [Scrum Definition](http://whatis.techtarget.com/definition/scrum-master).
 
 ~ A branch is a clone of the master/main project worked on in git, used to edit or work on code without effecting the primary project branch until ready to merge/pull request. A commit it an edit or change made to the branch, and such can be seen in the history of a project branch. To rebase the pull request on master and squash it into one commit so it can be merged & reduce the number of commits to clean the branch history; it means to perform a pull request and then squash commits to reduce the number of comments & changes listed so the branches when merged and allow for a more streamlined view of edits and progress made.
 
