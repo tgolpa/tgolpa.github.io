@@ -42,10 +42,3 @@ What does Vectorize mean? In computer graphics, image tracing, raster-to-vector 
 
 Having trouble? Message tgolpa's Linkedin and help will be on the way!
 
-```python
-import turtle
-t = turtle.Pen()
-t.pencolor("red")
-for x in range(100):
-    t.circle(x)
-    t.left(55)
