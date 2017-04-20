@@ -43,8 +43,6 @@ What does Vectorize mean? In computer graphics, image tracing, raster-to-vector 
 Having trouble? Message tgolpa's Linkedin and help will be on the way!
 
 ```python
-s = "Python syntax highlighting"
-print s
 #CircleSpiral1.py - Draws a red circle spiral
 import turtle
 t = turtle.Pen()
