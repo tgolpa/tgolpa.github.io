@@ -33,7 +33,7 @@ What does Vectorize mean? In computer graphics, image tracing, raster-to-vector 
 
 ~ What is Scrum? A scrum master is the facilitator for an agile development team. Scrum is a methodology that allows a team to self-organize and make changes quickly, in accordance with agile principles. The scrum master manages the process for how information is exchanged. [Scrum Definition](http://whatis.techtarget.com/definition/scrum-master).
 
-~ Quicksort Definition: An efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order. [Quicksort Definition](https://en.wikipedia.org/wiki/Quicksort).
+~ What is a Quicksort? An efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order. [Quicksort Definition](https://en.wikipedia.org/wiki/Quicksort).
 
 ~ A branch is a clone of the master/main project worked on in git, used to edit or work on code without effecting the primary project branch until ready to merge/pull request. A commit it an edit or change made to the branch, and such can be seen in the history of a project branch. To rebase the pull request on master and squash it into one commit so it can be merged & reduce the number of commits to clean the branch history; it means to perform a pull request and then squash commits to reduce the number of comments & changes listed so the branches when merged and allow for a more streamlined view of edits and progress made.
 
