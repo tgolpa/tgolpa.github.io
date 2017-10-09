@@ -42,5 +42,5 @@ What does Vectorize mean? In computer graphics, image tracing, raster-to-vector 
 
 ### Support or Contact:
 
-Having trouble? Message tgolpa's Linkedin and help will be on the way!
+Having trouble? Message tgolpa on Linkedin and help will be on the way!
 
