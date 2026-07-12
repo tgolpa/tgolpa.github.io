@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Timer — ADHD Brain HQ</title>
+<style>
+  :root{
+    --bg:#f7f5ff; --card:#ffffff; --text:#2d2440; --sub:#7a6f96;
+    --accent:#7c5cff; --accent2:#b39dff; --ring-track:#e9e3ff;
+    --good:#34c98e; --shadow:0 10px 30px rgba(124,92,255,.15);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#17141f; --card:#221d31; --text:#f0ecff; --sub:#9c92bd;
+      --accent:#9d84ff; --accent2:#6f57d1; --ring-track:#332b4a;
+      --shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--text);
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:16px;
+  }
+  .card{
+    background:var(--card); border-radius:28px; box-shadow:var(--shadow);
+    padding:28px 32px; width:100%; max-width:360px; text-align:center;
+  }
+  h1{font-size:15px; font-weight:700; letter-spacing:.4px; color:var(--sub); text-transform:uppercase;}
+  .msg{font-size:14px; color:var(--sub); margin-top:4px; min-height:20px;}
+  .ring-wrap{position:relative; width:200px; height:200px; margin:18px auto;}
+  svg{transform:rotate(-90deg);}
+  .track{fill:none; stroke:var(--ring-track); stroke-width:12;}
+  .bar{fill:none; stroke:var(--accent); stroke-width:12; stroke-linecap:round;
+    transition:stroke-dashoffset .3s linear;}
+  .time{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+  }
+  .time b{font-size:44px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .time span{font-size:12px; color:var(--sub); margin-top:2px;}
+  .presets{display:flex; gap:8px; justify-content:center; margin-bottom:16px;}
+  .presets button{
+    border:none; border-radius:999px; padding:8px 16px; font-size:14px; font-weight:700;
+    background:var(--ring-track); color:var(--text); cursor:pointer; transition:.15s;
+  }
+  .presets button.active{background:var(--accent); color:#fff;}
+  .go{
+    width:100%; border:none; border-radius:18px; padding:16px; font-size:18px; font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer;
+    transition:transform .1s; letter-spacing:.3px;
+  }
+  .go:active{transform:scale(.97);}
+  .reset{
+    margin-top:10px; background:none; border:none; color:var(--sub);
+    font-size:13px; cursor:pointer; text-decoration:underline;
+  }
+  .done .time b{color:var(--good);}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <h1>🔥 Focus Timer</h1>
+  <div class="msg" id="msg">Just ten minutes. That's the whole deal.</div>
+  <div class="ring-wrap">
+    <svg width="200" height="200">
+      <circle class="track" cx="100" cy="100" r="88"/>
+      <circle class="bar" id="bar" cx="100" cy="100" r="88"/>
+    </svg>
+    <div class="time"><b id="clock">10:00</b><span id="state">ready</span></div>
+  </div>
+  <div class="presets">
+    <button data-m="5">5 min</button>
+    <button data-m="10" class="active">10 min</button>
+    <button data-m="25">25 min</button>
+  </div>
+  <button class="go" id="go">Start — just begin ✨</button>
+  <button class="reset" id="reset">reset</button>
+</div>
+<script>
+(function(){
+  const CIRC = 2*Math.PI*88;
+  const bar = document.getElementById('bar');
+  const clock = document.getElementById('clock');
+  const state = document.getElementById('state');
+  const msg = document.getElementById('msg');
+  const go = document.getElementById('go');
+  const card = document.getElementById('card');
+  bar.style.strokeDasharray = CIRC;
+  bar.style.strokeDashoffset = 0;
+
+  let total = 600, left = 600, tick = null;
+
+  const startMsgs = ["You only have to start.","Momentum > motivation.","Future-you says thanks.","One block. That's it."];
+  const doneMsgs = ["You DID it. Log that win! 🏆","Block complete — dopamine earned.","See? Ten minutes. You're unstoppable."];
+
+  function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+":"+String(s%60).padStart(2,'0');}
+  function render(){
+    clock.textContent = fmt(left);
+    bar.style.strokeDashoffset = CIRC * (1 - left/total);
+  }
+  function chime(){
+    try{
+      const ctx = new (window.AudioContext||window.webkitAudioContext)();
+      [523.25, 659.25, 783.99].forEach((f,i)=>{
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.frequency.value = f; o.type='sine'; o.connect(g); g.connect(ctx.destination);
+        g.gain.setValueAtTime(0.001, ctx.currentTime + i*0.18);
+        g.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + i*0.18 + 0.03);
+        g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i*0.18 + 0.5);
+        o.start(ctx.currentTime + i*0.18); o.stop(ctx.currentTime + i*0.18 + 0.55);
+      });
+    }catch(e){}
+  }
+  function finish(){
+    clearInterval(tick); tick = null;
+    card.classList.add('done');
+    state.textContent = "done!";
+    msg.textContent = doneMsgs[Math.floor(Math.random()*doneMsgs.length)];
+    go.textContent = "Go again? 🔁";
+    chime();
+    left = total;
+  }
+  go.addEventListener('click', ()=>{
+    if(tick){ clearInterval(tick); tick=null; state.textContent="paused"; go.textContent="Resume ▶"; return; }
+    card.classList.remove('done');
+    if(left<=0 || left===total) msg.textContent = startMsgs[Math.floor(Math.random()*startMsgs.length)];
+    state.textContent = "focusing"; go.textContent = "Pause ⏸";
+    tick = setInterval(()=>{
+      left--; render();
+      if(left<=0) finish();
+    }, 1000);
+  });
+  document.getElementById('reset').addEventListener('click', ()=>{
+    clearInterval(tick); tick=null; left=total; card.classList.remove('done');
+    state.textContent="ready"; go.textContent="Start — just begin ✨"; render();
+  });
+  document.querySelectorAll('.presets button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.presets button').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      clearInterval(tick); tick=null; card.classList.remove('done');
+      total = left = b.dataset.m*60;
+      state.textContent="ready"; go.textContent="Start — just begin ✨"; render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

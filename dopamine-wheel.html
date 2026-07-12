@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dopamine Wheel — ADHD Brain HQ</title>
+<style>
+  :root{
+    --bg:#fff7fa; --card:#ffffff; --text:#3a2233; --sub:#a07a90;
+    --accent:#ff5c9d; --accent2:#ffa3c8; --chip:#ffe4ef;
+    --shadow:0 10px 30px rgba(255,92,157,.16);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#1f1420; --card:#2c1c2c; --text:#ffeaf3; --sub:#c295ab;
+      --accent:#ff6ea8; --accent2:#b34d78; --chip:#3f2438;
+      --shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--text);
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:16px;
+  }
+  .card{
+    background:var(--card); border-radius:28px; box-shadow:var(--shadow);
+    padding:28px 32px; width:100%; max-width:380px; text-align:center;
+  }
+  h1{font-size:15px; font-weight:700; letter-spacing:.4px; color:var(--sub); text-transform:uppercase;}
+  .sub{font-size:13px; color:var(--sub); margin-top:4px;}
+  .result{
+    margin:20px 0; min-height:96px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:6px;
+    background:var(--chip); border-radius:20px; padding:16px;
+    transition:transform .15s;
+  }
+  .result.pop{animation:pop .35s ease;}
+  @keyframes pop{0%{transform:scale(.85); opacity:.4;} 60%{transform:scale(1.06);} 100%{transform:scale(1);}}
+  .result .emoji{font-size:40px; line-height:1;}
+  .result .act{font-size:17px; font-weight:800;}
+  .result .cat{font-size:12px; color:var(--sub); font-weight:600; text-transform:uppercase; letter-spacing:.5px;}
+  .filters{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;}
+  .filters button{
+    border:none; border-radius:999px; padding:7px 13px; font-size:12.5px; font-weight:700;
+    background:var(--chip); color:var(--text); cursor:pointer;
+  }
+  .filters button.active{background:var(--accent); color:#fff;}
+  .spin{
+    width:100%; border:none; border-radius:18px; padding:16px; font-size:18px; font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer;
+    transition:transform .1s; letter-spacing:.3px;
+  }
+  .spin:active{transform:scale(.97);}
+  .hint{margin-top:10px; font-size:11.5px; color:var(--sub);}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🍭 Dopamine Wheel</h1>
+  <div class="sub">Can't pick? Don't. Let the wheel decide.</div>
+  <div class="result" id="result">
+    <div class="emoji">🎰</div>
+    <div class="act">Hit spin when you're stuck</div>
+    <div class="cat">your brain will thank you</div>
+  </div>
+  <div class="filters" id="filters">
+    <button data-c="all" class="active">All</button>
+    <button data-c="app">🥂 5-min</button>
+    <button data-c="main">🍝 Recharge</button>
+    <button data-c="side">🍟 While working</button>
+    <button data-c="treat">🍰 Treat</button>
+  </div>
+  <button class="spin" id="spin">SPIN 🎲</button>
+  <div class="hint">Tip: mirror your Notion Dopamine Menu here — edit the list inside this file.</div>
+</div>
+<script>
+(function(){
+  // Edit this list to match your own Dopamine Menu ↓
+  const MENU = [
+    {e:"💃", a:"Dance break to one song", c:"app"},
+    {e:"🚶", a:"Walk around the block", c:"app"},
+    {e:"🧘", a:"90 seconds of deep breaths", c:"app"},
+    {e:"🎮", a:"Video game session (set a timer!)", c:"main"},
+    {e:"📺", a:"Deep-dive a hyperfixation video", c:"main"},
+    {e:"🛁", a:"Long shower or bath reset", c:"main"},
+    {e:"🎧", a:"Lo-fi playlist + candle", c:"side"},
+    {e:"☕", a:"Fancy coffee while doing admin", c:"side"},
+    {e:"🍿", a:"Podcast + boring chore combo", c:"side"},
+    {e:"🍕", a:"Order takeout + comfort show", c:"treat"},
+    {e:"🛋️", a:"Guilt-free couch hour", c:"treat"}
+  ];
+  let filter = "all";
+  const result = document.getElementById('result');
+  const spin = document.getElementById('spin');
+  let spinning = false;
+
+  document.querySelectorAll('#filters button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); filter = b.dataset.c;
+    });
+  });
+
+  function pool(){ return filter==="all" ? MENU : MENU.filter(m=>m.c===filter); }
+  function show(item){
+    const cats = {app:"🥂 Appetizer — 5 min", main:"🍝 Main — real recharge", side:"🍟 Side — while working", treat:"🍰 Dessert — pure treat"};
+    result.innerHTML = '<div class="emoji">'+item.e+'</div><div class="act">'+item.a+'</div><div class="cat">'+cats[item.c]+'</div>';
+    result.classList.remove('pop'); void result.offsetWidth; result.classList.add('pop');
+  }
+  spin.addEventListener('click', ()=>{
+    if(spinning) return;
+    const p = pool(); if(!p.length) return;
+    spinning = true; spin.textContent = "…";
+    let n = 0;
+    const roll = setInterval(()=>{
+      show(p[Math.floor(Math.random()*p.length)]);
+      if(++n >= 10){
+        clearInterval(roll); spinning = false; spin.textContent = "SPIN AGAIN 🎲";
+      }
+    }, 90);
+  });
+})();
+</script>
+</body>
+</html>
